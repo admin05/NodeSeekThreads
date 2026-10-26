@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         NodeSeek Threads v1.6.5
-// @name:zh-CN   NodeSeek 楼中楼 v1.6.5
+// @name         NodeSeek Threads v1.6.6
+// @name:zh-CN   NodeSeek 楼中楼 v1.6.6
 // @namespace    http://tampermonkey.net/
-// @version      1.6.5
+// @version      1.6.6
 // @description  Optimized nested comments with reliable username extraction, fully asynchronous cross-page quoting and mention processing.
 // @description:zh-CN 为 NodeSeek 网站提供优化版嵌套评论（楼中楼）功能，支持可靠的用户名提取、完全异步的跨页引用和提及处理。
 // @author       Dean & Gemini
@@ -15,8 +15,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nodeseek.com
 // @license      MIT
 // @homepageURL  https://github.com/admin05/NodeSeekThreads
-// @downloadURL https://raw.githubusercontent.com/admin05/NodeSeekThreads/main/NodeSeek%20Threads%20v1.6-1.6.txt
-// @updateURL https://raw.githubusercontent.com/admin05/NodeSeekThreads/main/NodeSeek%20Threads%20v1.6-1.6.txt
+// @downloadURL https://raw.githubusercontent.com/admin05/NodeSeekThreads/main/NodeSeek%20Threads.user.js
+// @updateURL https://raw.githubusercontent.com/admin05/NodeSeekThreads/main/NodeSeek%20Threads.user.js
 // ==/UserScript==
 
 (function() {
@@ -110,7 +110,7 @@
                 gap: 5px;
                 flex-grow: 1;
             }
-            
+
             .cross-page-quote .quote-author {
                 font-weight: bold;
             }
@@ -165,7 +165,7 @@
         GM_addStyle(styles);
     }
 
-    // --- 4. Core Logic Functions / 核心逻辑函数 --- 
+    // --- 4. Core Logic Functions / 核心逻辑函数 ---
 
     /**
      * Reliably extracts the author name from a comment element.
@@ -321,7 +321,7 @@
                    .toLowerCase();
     }
 
-    // --- 5. Main Comment Processing Logic / 主要评论处理逻辑 --- 
+    // --- 5. Main Comment Processing Logic / 主要评论处理逻辑 ---
     let commentsToProcessForMentionsGlobal = []; // Global variable to store comments for mention nesting processing / 全局变量，存储需要进行提及嵌套处理的评论
     let userLastCommentMap = new Map(); // Global variable to map normalized usernames to their last comment element / 全局变量，存储规范化用户名到其最新评论元素的映射
     let commentsToProcessForCrossQuotesGlobal = []; // Global variable to store comments for cross-page quoting processing / 全局变量，存储需要进行跨页引用处理的评论数据
@@ -432,13 +432,13 @@
             const mentionLinks = comment.querySelectorAll('.post-content a[href^="/member?"]');
             for (const mentionLink of mentionLinks) {
                 if (mentionLink.closest('blockquote') || !mentionLink.textContent.startsWith('@')) {
-                    continue; 
+                    continue;
                 }
 
                 const username = mentionLink.textContent.substring(1).trim();
                 const normalizedUsername = normalizeUsername(username);
 
-                if (normalizedUsername.length < 2) { 
+                if (normalizedUsername.length < 2) {
                     continue;
                 }
 
@@ -453,7 +453,7 @@
                     }
                     container.appendChild(comment);
                     comment.classList.add('is-nested');
-                    break; 
+                    break;
                 }
             }
         });
@@ -495,7 +495,7 @@
         }
     }
 
-    // --- 6. Initialization / 初始化 --- 
+    // --- 6. Initialization / 初始化 ---
     window.addEventListener('load', () => {
         registerMenuCommands(); // Register menu commands / 注册菜单命令
         applyStyles();          // Apply styles / 应用样式
@@ -506,12 +506,12 @@
         // Asynchronously process mention nesting / 异步处理提及嵌套
         // Use setTimeout to ensure execution when the main thread is idle, not blocking page load
         // 使用 setTimeout 确保在主线程空闲时执行，不阻塞页面加载
-        setTimeout(processMentionsSeparately, 100); 
+        setTimeout(processMentionsSeparately, 100);
 
         // Asynchronously process cross-page quoting / 异步处理跨页引用
         // Give mention nesting some time, then process cross-page quoting
         // 给予提及嵌套一些时间，再处理跨页引用
-        setTimeout(processCrossPageQuotesSeparately, 200); 
+        setTimeout(processCrossPageQuotesSeparately, 200);
 
         // Set up MutationObserver to listen for DOM changes, to re-process comments / 设置 MutationObserver 监听 DOM 变化，以便重新处理评论
         const commentsContainer = document.querySelector('.comments');
