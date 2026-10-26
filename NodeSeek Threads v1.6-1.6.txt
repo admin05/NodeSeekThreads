@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         NodeSeek Threads v1.6.4
-// @name:zh-CN   NodeSeek 楼中楼 v1.6.4
+// @name         NodeSeek Threads v1.6.5
+// @name:zh-CN   NodeSeek 楼中楼 v1.6.5
 // @namespace    http://tampermonkey.net/
-// @version      1.6.4
+// @version      1.6.5
 // @description  Optimized nested comments with reliable username extraction, fully asynchronous cross-page quoting and mention processing.
 // @description:zh-CN 为 NodeSeek 网站提供优化版嵌套评论（楼中楼）功能，支持可靠的用户名提取、完全异步的跨页引用和提及处理。
 // @author       Dean & Gemini
@@ -57,24 +57,13 @@
         let styles = `
             /* --- Base Styles for Nested Replies Container / 嵌套回复容器基础样式 --- */
             .nested-replies-container {
-                border: 1px solid rgba(0,0,0,.1);
-                border-left: none;
-                margin-top: 10px;
-                padding: 0 8px 5px 12px;
-                border-radius: 1px;
-                transition: border .3s;
-                background: hsla(0,0%,100%,.01) !important;
-                position: relative;
+                border: none;
+                border-left: 4px solid #c3ccef;
+                margin: 10px 0 0 24px;
+                padding: 8px 12px 8px 16px;
+                transition: background .3s, border-color .3s;
+                background: #f3f6fb !important;
             }
-            .nested-replies-container::before, .nested-replies-container::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 1px;
-            }
-            .nested-replies-container::before { left: 0; background-color: rgba(0,0,0,.025); }
-            .nested-replies-container::after { left: 1px; background-color: rgba(0,0,0,.055); }
 
             /* --- Base Styles for Nested Comment Items / 嵌套评论项基础样式 --- */
             .nested-replies-container > .content-item.is-nested {
@@ -142,9 +131,10 @@
             }
 
             /* --- Dark Mode Overrides / 暗色模式覆盖样式 --- */
-            body.dark-layout .nested-replies-container { border-color: hsla(0,0%,100%,.1) !important; }
-            body.dark-layout .nested-replies-container::before { background-color: hsla(0,0%,100%,.025); }
-            body.dark-layout .nested-replies-container::after { background-color: hsla(0,0%,100%,.055); }
+            body.dark-layout .nested-replies-container {
+                border-left-color: hsla(0,0%,100%,.28);
+                background: hsla(0,0%,100%,.045) !important;
+            }
             body.dark-layout .nested-replies-container > .content-item.is-nested { border-bottom-color: hsla(0,0%,100%,.08) !important; }
             body.dark-layout .cross-page-quote {
                 border-left-color: hsla(0,0%,100%,.2);
