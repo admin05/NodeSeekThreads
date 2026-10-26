@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         NodeSeek Threads v1.6.3
-// @name:zh-CN   NodeSeek 楼中楼 v1.6.3
+// @name         NodeSeek Threads v1.6.4
+// @name:zh-CN   NodeSeek 楼中楼 v1.6.4
 // @namespace    http://tampermonkey.net/
-// @version      1.6.3
+// @version      1.6.4
 // @description  Optimized nested comments with reliable username extraction, fully asynchronous cross-page quoting and mention processing.
 // @description:zh-CN 为 NodeSeek 网站提供优化版嵌套评论（楼中楼）功能，支持可靠的用户名提取、完全异步的跨页引用和提及处理。
 // @author       Dean & Gemini
@@ -55,26 +55,6 @@
      */
     function applyStyles() {
         let styles = `
-            /* --- Base Styles for Top-level Comments / 顶级评论基础样式 --- */
-            .comments > .content-item {
-                background: rgba(0,0,0,.05) !important;
-                border: 1px solid rgba(0,0,0,.05) !important;
-                padding: 10px 10px 10px 16px !important;
-                margin-bottom: 10px !important;
-                border-radius: 1px !important;
-                transition: background .3s, border .3s;
-                position: relative;
-            }
-            .comments > .content-item::before, .comments > .content-item::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 1px;
-            }
-            .comments > .content-item::before { left: 0; background-color: rgba(0,0,0,.04); }
-            .comments > .content-item::after { left: 1px; background-color: rgba(0,0,0,.07); }
-
             /* --- Base Styles for Nested Replies Container / 嵌套回复容器基础样式 --- */
             .nested-replies-container {
                 border: 1px solid rgba(0,0,0,.1);
@@ -162,12 +142,6 @@
             }
 
             /* --- Dark Mode Overrides / 暗色模式覆盖样式 --- */
-            body.dark-layout .comments > .content-item {
-                background: hsla(0,0%,100%,.01) !important;
-                border: 1px solid hsla(0,0%,100%,.05) !important;
-            }
-            body.dark-layout .comments > .content-item::before { background-color: hsla(0,0%,100%,.025); }
-            body.dark-layout .comments > .content-item::after { background-color: hsla(0,0%,100%,.05); }
             body.dark-layout .nested-replies-container { border-color: hsla(0,0%,100%,.1) !important; }
             body.dark-layout .nested-replies-container::before { background-color: hsla(0,0%,100%,.025); }
             body.dark-layout .nested-replies-container::after { background-color: hsla(0,0%,100%,.055); }
@@ -184,16 +158,6 @@
             body.dark-layout .quote-floor-id { background: hsla(0,0%,100%,.1); }
             body.dark-layout .cross-page-quote .quote-time {
                 color: #999;
-            }
-
-            /* --- Floor Link Styles / 楼层链接样式 --- */
-            .content-item:not(.is-nested) .floor-link {
-                font-weight: bold;
-                background: rgba(0,0,0,.1);
-                padding: 2px 6px;
-                border-radius: 5px;
-                font-size: 0.85em;
-                margin-right: 8px;
             }
 
             /* --- Nested Floor Link Styles / 嵌套楼层链接样式 --- */
