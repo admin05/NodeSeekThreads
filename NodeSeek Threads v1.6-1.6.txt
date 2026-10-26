@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         NodeSeek Threads v1.6.2
-// @name:zh-CN   NodeSeek 楼中楼 v1.6.2
+// @name         NodeSeek Threads v1.6.3
+// @name:zh-CN   NodeSeek 楼中楼 v1.6.3
 // @namespace    http://tampermonkey.net/
-// @version      1.6.2
+// @version      1.6.3
 // @description  Optimized nested comments with reliable username extraction, fully asynchronous cross-page quoting and mention processing.
 // @description:zh-CN 为 NodeSeek 网站提供优化版嵌套评论（楼中楼）功能，支持可靠的用户名提取、完全异步的跨页引用和提及处理。
 // @author       Dean & Gemini
@@ -70,10 +70,10 @@
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                width: 3px;
+                width: 1px;
             }
-            .comments > .content-item::before { left: 0; background-color: rgba(0,0,0,.1); }
-            .comments > .content-item::after { left: 3px; background-color: rgba(0,0,0,.2); }
+            .comments > .content-item::before { left: 0; background-color: rgba(0,0,0,.04); }
+            .comments > .content-item::after { left: 1px; background-color: rgba(0,0,0,.07); }
 
             /* --- Base Styles for Nested Replies Container / 嵌套回复容器基础样式 --- */
             .nested-replies-container {
@@ -166,8 +166,8 @@
                 background: hsla(0,0%,100%,.01) !important;
                 border: 1px solid hsla(0,0%,100%,.05) !important;
             }
-            body.dark-layout .comments > .content-item::before { background-color: hsla(0,0%,100%,.05); }
-            body.dark-layout .comments > .content-item::after { background-color: hsla(0,0%,100%,.1); }
+            body.dark-layout .comments > .content-item::before { background-color: hsla(0,0%,100%,.025); }
+            body.dark-layout .comments > .content-item::after { background-color: hsla(0,0%,100%,.05); }
             body.dark-layout .nested-replies-container { border-color: hsla(0,0%,100%,.1) !important; }
             body.dark-layout .nested-replies-container::before { background-color: hsla(0,0%,100%,.025); }
             body.dark-layout .nested-replies-container::after { background-color: hsla(0,0%,100%,.055); }
