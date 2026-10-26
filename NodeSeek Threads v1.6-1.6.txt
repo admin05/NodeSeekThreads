@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         NodeSeek Threads v1.6.1
-// @name:zh-CN   NodeSeek 楼中楼 v1.6.1
+// @name         NodeSeek Threads v1.6.2
+// @name:zh-CN   NodeSeek 楼中楼 v1.6.2
 // @namespace    http://tampermonkey.net/
-// @version      1.6.1
+// @version      1.6.2
 // @description  Optimized nested comments with reliable username extraction, fully asynchronous cross-page quoting and mention processing.
 // @description:zh-CN 为 NodeSeek 网站提供优化版嵌套评论（楼中楼）功能，支持可靠的用户名提取、完全异步的跨页引用和提及处理。
 // @author       Dean & Gemini
@@ -91,10 +91,10 @@
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                width: 2px;
+                width: 1px;
             }
             .nested-replies-container::before { left: 0; background-color: rgba(0,0,0,.025); }
-            .nested-replies-container::after { left: 2px; background-color: rgba(0,0,0,.055); }
+            .nested-replies-container::after { left: 1px; background-color: rgba(0,0,0,.055); }
 
             /* --- Base Styles for Nested Comment Items / 嵌套评论项基础样式 --- */
             .nested-replies-container > .content-item.is-nested {
