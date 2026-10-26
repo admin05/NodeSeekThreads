@@ -93,8 +93,8 @@
                 bottom: 0;
                 width: 2px;
             }
-            .nested-replies-container::before { left: 0; background-color: rgba(0,0,0,.05); }
-            .nested-replies-container::after { left: 2px; background-color: rgba(0,0,0,.1); }
+            .nested-replies-container::before { left: 0; background-color: rgba(0,0,0,.025); }
+            .nested-replies-container::after { left: 2px; background-color: rgba(0,0,0,.055); }
 
             /* --- Base Styles for Nested Comment Items / 嵌套评论项基础样式 --- */
             .nested-replies-container > .content-item.is-nested {
@@ -169,8 +169,8 @@
             body.dark-layout .comments > .content-item::before { background-color: hsla(0,0%,100%,.05); }
             body.dark-layout .comments > .content-item::after { background-color: hsla(0,0%,100%,.1); }
             body.dark-layout .nested-replies-container { border-color: hsla(0,0%,100%,.1) !important; }
-            body.dark-layout .nested-replies-container::before { background-color: hsla(0,0%,100%,.05); }
-            body.dark-layout .nested-replies-container::after { background-color: hsla(0,0%,100%,.1); }
+            body.dark-layout .nested-replies-container::before { background-color: hsla(0,0%,100%,.025); }
+            body.dark-layout .nested-replies-container::after { background-color: hsla(0,0%,100%,.055); }
             body.dark-layout .nested-replies-container > .content-item.is-nested { border-bottom-color: hsla(0,0%,100%,.08) !important; }
             body.dark-layout .cross-page-quote {
                 border-left-color: hsla(0,0%,100%,.2);
